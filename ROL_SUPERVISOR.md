@@ -108,6 +108,7 @@ Reglas:
 
 Referencia operativa del proyecto:
 1. docs/operacion/PROTOCOLO_ORDEN_Y_OPTIMIZACION.md
+2. docs/operacion/PROTOCOLO_GIT_Y_PULL_REQUEST.md
 
 ## Matriz de Evidencia Minima (Universal)
 Aplicar segun el tipo de proyecto o tarea:
