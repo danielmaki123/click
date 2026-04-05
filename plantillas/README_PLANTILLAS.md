@@ -11,3 +11,8 @@ Carpetas:
 
 Regla base:
 1. Todo archivo nuevo debe tener: proposito, owner y ubicacion definida.
+
+Recomendacion de arranque (Supervisor):
+1. Inicializar Git en raiz si el proyecto no tiene repositorio.
+2. Crear .gitignore base del stack.
+3. Generar commit baseline antes de iniciar bloques operativos.

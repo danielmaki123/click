@@ -20,3 +20,10 @@ Gate pre-decision (obligatorio):
 1. Confirmar checklist pre-decision antes de cada veredicto.
 2. Registrar veredicto y motivo en decision log.
 3. Sin registro, decision no oficial.
+
+Inicializacion recomendada del supervisor (proyecto nuevo):
+1. Verificar si existe repositorio Git en la raiz.
+2. Si no existe, inicializar Git y crear .gitignore base.
+3. Crear commit baseline inicial antes de iniciar ejecucion de bloques.
+4. Confirmar arbol limpio (git status sin cambios pendientes).
+5. Registrar esta inicializacion en canal maestro y decision log.
