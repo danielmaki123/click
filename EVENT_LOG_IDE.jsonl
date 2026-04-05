@@ -1,0 +1,3 @@
+{"evt_id":"EVT-0001","time":"2026-04-05T00:00:00Z","ide":"IDE_A","block":"BOOTSTRAP","state":"working","delta":"Canal vivo inicializado","evidence":"CANAL_VIVO_PROTOCOLO.md creado","next":"Publicar heartbeat"}
+{"evt_id":"EVT-0002","time":"2026-04-05T00:00:05Z","ide":"IDE_B","block":"BOOTSTRAP","state":"working","delta":"Formato de eventos validado","evidence":"Linea jsonl valida","next":"Sincronizar con supervisor"}
+{"evt_id":"EVT-0003","time":"2026-04-05T00:00:10Z","ide":"IDE_A","block":"BOOTSTRAP","state":"done","delta":"Bootstrap operativo completado","evidence":"Canales base listos","next":"Iniciar bloque autorizado"}

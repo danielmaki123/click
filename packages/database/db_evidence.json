@@ -1,0 +1,14 @@
+{
+  "id": "dc7523ed-b1b3-42a4-a116-503b76ec6830",
+  "restaurantId": "b9c93c8b-6175-4325-a253-1d2147c720e7",
+  "orderNumber": 5,
+  "customerName": "Test F3",
+  "customerPhone": "88888888",
+  "status": "ACCEPTED",
+  "total": "289.95",
+  "createdAt": "2026-04-05T13:36:17.771Z",
+  "acceptedAt": "2026-04-05T13:36:20.049Z",
+  "readyAt": null,
+  "manyChatMessageId": null,
+  "customerNotified": false
+}
