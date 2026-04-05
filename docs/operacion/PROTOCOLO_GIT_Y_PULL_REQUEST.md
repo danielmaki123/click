@@ -44,3 +44,6 @@ Recomendacion GitHub (manual):
 2. Requerir PR para merge.
 3. Requerir status checks (CI) para merge.
 4. Bloquear push directo a master.
+
+Checklist rapido:
+1. docs/operacion/CHECKLIST_GITHUB_BRANCH_PROTECTION.md
