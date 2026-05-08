@@ -1,5 +1,5 @@
 model:
-  provider: "openai"
+  provider: "custom"
   default: "llama3.2"
   base_url: "http://ollama:11434/v1"
   api_key: "ollama"
