@@ -12,6 +12,7 @@ services:
       - ollama
     environment:
       TELEGRAM_BOT_TOKEN: ${TELEGRAM_TOKEN}
+      GATEWAY_ALLOW_ALL_USERS: "true"
     volumes:
       - ./.hermes:/opt/data
     restart: always
