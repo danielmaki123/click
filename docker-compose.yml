@@ -4,7 +4,13 @@ services:
     volumes:
       - ollama_data:/root/.ollama
     restart: always
-    entrypoint: /bin/sh -c "ollama serve & sleep 10 && ollama pull llama3.2 && tail -f /dev/null"
+    entrypoint: /bin/sh -c "ollama serve & sleep 10; for i in 1 2 3 4 5; do ollama list >/dev/null 2>&1 && break; sleep 3; done; ollama pull llama3.2; wait"
+    healthcheck:
+      test: ["CMD-SHELL", "ollama list || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 30s
 
   andrea:
     image: nousresearch/hermes-agent:latest
