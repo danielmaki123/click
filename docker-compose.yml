@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: andrea-ollama
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: always
+    # Aseguramos que el modelo se descargue al iniciar
+    entrypoint: /bin/sh -c "ollama serve & sleep 10 && ollama pull llama3.2 && tail -f /dev/null"
+
+  andrea:
+    image: ghcr.io/nousresearch/hermes-agent:latest
+    container_name: andrea-agent
+    depends_on:
+      - ollama
+    environment:
+      - TELEGRAM_TOKEN=8355109725:AAHIeeteXqfw6r8wJ1g7nVvh25uicy_1lTE
+      - OPENAI_BASE_URL=http://ollama:11434/v1
+      - OPENAI_API_KEY=ollama
+      - LLM_PROVIDER=openai
+      - LLM_MODEL=llama3.2
+      - CUSTOM_SYSTEM_PROMPT_PATH=/root/.hermes/SOUL.md
+      - MESSAGING_GATEWAY=telegram
+    volumes:
+      - ./.hermes:/root/.hermes
+    restart: always
+
+volumes:
+  ollama_data:
