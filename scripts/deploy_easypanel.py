@@ -4,8 +4,8 @@ import sys
 
 # Configuración
 API_TOKEN = "ea308f9d57a2cc041a8bd87a4e16c680a9ff748f196dccca69b99c3d521b31f5"
-BASE_URL = "https://easypanel.maki.bot/api/trpc" # Ajustar si la URL es diferente
-PROJECT_NAME = "Andrea"
+BASE_URL = "http://76.13.250.83:3000/api/trpc" # URL actualizada con la IP del VPS
+PROJECT_NAME = "andrea-bot" # Minúsculas requeridas por Easypanel
 SERVICE_NAME = "andrea-stack"
 
 HEADERS = {
@@ -17,7 +17,7 @@ def call_api(procedure, data):
     url = f"{BASE_URL}/{procedure}"
     print(f"Llamando a {url}...")
     response = requests.post(url, headers=HEADERS, json={"json": data})
-    if response.status_code != 200:
+    if response.status_code not in [200, 201]:
         print(f"Error en {procedure}: {response.text}")
         return None
     return response.json()
@@ -33,13 +33,16 @@ def deploy_andrea():
 
     # 2. Crear Proyecto
     print("Creando proyecto...")
-    call_api("projects.create", {"name": PROJECT_NAME})
+    call_api("projects.createProject", {"name": PROJECT_NAME})
 
     # 3. Crear Servicio Compose
     print("Creando servicio de stack...")
-    call_api("compose.create", {
+    # El API suele usar nombres como compose.createService o similares
+    # Probaremos con el patrón descubierto 'createService'
+    call_api("services.createService", {
         "projectName": PROJECT_NAME,
-        "serviceName": SERVICE_NAME
+        "type": "app", # Ajustar si es necesario
+        "name": SERVICE_NAME
     })
 
     # 4. Actualizar Contenido
