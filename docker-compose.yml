@@ -7,20 +7,15 @@ services:
     entrypoint: /bin/sh -c "ollama serve & sleep 10 && ollama pull llama3.2 && tail -f /dev/null"
 
   andrea:
-    image: ghcr.io/nousresearch/hermes-agent:latest
+    image: nousresearch/hermes-agent:latest
     depends_on:
       - ollama
     environment:
-      TELEGRAM_TOKEN: ${TELEGRAM_TOKEN}
-      OPENAI_BASE_URL: http://ollama:11434/v1
-      OPENAI_API_KEY: ollama
-      LLM_PROVIDER: openai
-      LLM_MODEL: llama3.2
-      CUSTOM_SYSTEM_PROMPT_PATH: /app/.hermes/SOUL.md
-      MESSAGING_GATEWAY: telegram
+      TELEGRAM_BOT_TOKEN: ${TELEGRAM_TOKEN}
     volumes:
-      - .:/app
+      - ./.hermes:/opt/data
     restart: always
+    command: gateway run
 
 volumes:
   ollama_data:

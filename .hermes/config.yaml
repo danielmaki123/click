@@ -1,0 +1,9 @@
+model:
+  provider: "openai"
+  default: "llama3.2"
+  base_url: "http://ollama:11434/v1"
+  api_key: "ollama"
+  system_prompt_path: "/opt/data/SOUL.md"
+
+telegram:
+  require_mention: false
