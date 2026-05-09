@@ -4,6 +4,8 @@ services:
     volumes:
       - ollama_data:/root/.ollama
     restart: always
+    environment:
+      OLLAMA_HOST: "0.0.0.0"
     entrypoint: /bin/sh -c "ollama serve & sleep 10; for i in 1 2 3 4 5; do ollama list >/dev/null 2>&1 && break; sleep 3; done; ollama pull llama3.2; wait"
     healthcheck:
       test: ["CMD-SHELL", "ollama list || exit 1"]
@@ -21,7 +23,7 @@ services:
     environment:
       TELEGRAM_BOT_TOKEN: ${TELEGRAM_TOKEN}
       GATEWAY_ALLOW_ALL_USERS: "true"
-      DEPLOY_TIMESTAMP: "2026-05-08T23:05:00"
+      DEPLOY_TIMESTAMP: "2026-05-08T23:15:00"
     volumes:
       - ./.hermes:/opt/data
     restart: always
