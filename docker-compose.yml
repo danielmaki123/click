@@ -1,6 +1,8 @@
 services:
   ollama:
     image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
     volumes:
       - ollama_data:/root/.ollama
     restart: always
@@ -19,7 +21,7 @@ services:
     environment:
       TELEGRAM_BOT_TOKEN: ${TELEGRAM_TOKEN}
       GATEWAY_ALLOW_ALL_USERS: "true"
-      DEPLOY_TIMESTAMP: "2026-05-08T22:55:00"
+      DEPLOY_TIMESTAMP: "2026-05-08T23:00:00"
     volumes:
       - ./.hermes:/opt/data
     restart: always
