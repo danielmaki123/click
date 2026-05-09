@@ -1,8 +1,6 @@
 services:
   ollama:
     image: ollama/ollama:latest
-    ports:
-      - "11434:11434"
     volumes:
       - ollama_data:/root/.ollama
     restart: always
@@ -13,6 +11,8 @@ services:
       timeout: 5s
       retries: 6
       start_period: 30s
+    networks:
+      - andrea-net
 
   andrea:
     image: nousresearch/hermes-agent:latest
@@ -21,11 +21,17 @@ services:
     environment:
       TELEGRAM_BOT_TOKEN: ${TELEGRAM_TOKEN}
       GATEWAY_ALLOW_ALL_USERS: "true"
-      DEPLOY_TIMESTAMP: "2026-05-08T23:00:00"
+      DEPLOY_TIMESTAMP: "2026-05-08T23:05:00"
     volumes:
       - ./.hermes:/opt/data
     restart: always
     command: gateway run
+    networks:
+      - andrea-net
 
 volumes:
   ollama_data:
+
+networks:
+  andrea-net:
+    driver: bridge
